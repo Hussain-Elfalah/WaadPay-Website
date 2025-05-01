@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <style>
+    .title {
+      font-family: Arial, sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      fill: #1e293b;
+    }
+    .subtitle {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      fill: #64748b;
+    }
+    .box-title {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      fill: #ffffff;
+    }
+    .box-text {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      fill: #ffffff;
+    }
+    .label {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      fill: #64748b;
+    }
+    .connection-label {
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      fill: #64748b;
+    }
+    .glow {
+      filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
+    }
+    @media (prefers-color-scheme: dark) {
+      .title { fill: #f1f5f9; }
+      .subtitle { fill: #94a3b8; }
+      .label { fill: #94a3b8; }
+      .connection-label { fill: #94a3b8; }
+    }
+  </style>
+  
+  <!-- Background -->
+  <rect width="800" height="600" fill="#ffffff" fill-opacity="0.01"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" class="title">WaadPay System Architecture</text>
+  <text x="400" y="65" text-anchor="middle" class="subtitle">Optimized for Libya's unique technical environment</text>
+  
+  <!-- Front End Layer -->
+  <g transform="translate(50, 100)">
+    <rect x="0" y="0" width="700" height="100" rx="8" fill="#3b82f6" fill-opacity="0.1" stroke="#3b82f6" stroke-width="1"/>
+    <text x="20" y="25" class="label">FRONT END LAYER</text>
+    
+    <!-- Mobile App -->
+    <g transform="translate(50, 30)" class="glow">
+      <rect x="0" y="0" width="140" height="50" rx="6" fill="url(#mobileGradient)" stroke="#3b82f6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" class="box-title">Mobile App</text>
+      <text x="70" y="40" text-anchor="middle" class="box-text">Flutter / Offline-First</text>
+    </g>
+    
+    <!-- Web Portal -->
+    <g transform="translate(280, 30)" class="glow">
+      <rect x="0" y="0" width="140" height="50" rx="6" fill="url(#webGradient)" stroke="#3b82f6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" class="box-title">Web Portal</text>
+      <text x="70" y="40" text-anchor="middle" class="box-text">Next.js / React</text>
+    </g>
+    
+    <!-- Merchant Terminal -->
+    <g transform="translate(510, 30)" class="glow">
+      <rect x="0" y="0" width="140" height="50" rx="6" fill="url(#terminalGradient)" stroke="#3b82f6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" class="box-title">Merchant Terminal</text>
+      <text x="70" y="40" text-anchor="middle" class="box-text">Flutter / Hardware SDK</text>
+    </g>
+  </g>
+  
+  <!-- API Gateway Layer -->
+  <g transform="translate(50, 230)">
+    <rect x="0" y="0" width="700" height="80" rx="8" fill="#8b5cf6" fill-opacity="0.1" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="20" y="25" class="label">API GATEWAY LAYER</text>
+    
+    <!-- API Gateway -->
+    <g transform="translate(280, 20)" class="glow">
+      <rect x="0" y="0" width="140" height="50" rx="6" fill="url(#apiGradient)" stroke="#8b5cf6" stroke-width="1"/>
+      <text x="70" y="25" text-anchor="middle" class="box-title">API Gateway</text>
+      <text x="70" y="40" text-anchor="middle" class="box-text">Node.js / Express</text>
+    </g>
+  </g>
+  
+  <!-- Service Layer -->
+  <g transform="translate(50, 340)">
+    <rect x="0" y="0" width="700" height="140" rx="8" fill="#ec4899" fill-opacity="0.1" stroke="#ec4899" stroke-width="1"/>
+    <text x="20" y="25" class="label">SERVICE LAYER</text>
+    
+    <!-- Authentication -->
+    <g transform="translate(50, 50)" class="glow">
+      <rect x="0" y="0" width="120" height="60" rx="6" fill="url(#authGradient)" stroke="#ec4899" stroke-width="1"/>
+      <text x="60" y="25" text-anchor="middle" class="box-title">Authentication</text>
+      <text x="60" y="40" text-anchor="middle" class="box-text">SIM-Binding</text>
+      <text x="60" y="52" text-anchor="middle" class="box-text">2FA</text>
+    </g>
+    
+    <!-- Payment Processing -->
+    <g transform="translate(200, 50)" class="glow">
+      <rect x="0" y="0" width="120" height="60" rx="6" fill="url(#paymentGradient)" stroke="#ec4899" stroke-width="1"/>
+      <text x="60" y="25" text-anchor="middle" class="box-title">Payment</text>
+      <text x="60" y="40" text-anchor="middle" class="box-text">Processing</text>
+      <text x="60" y="52" text-anchor="middle" class="box-text">Escrow System</text>
+    </g>
+    
+    <!-- Bank Abstraction -->
+    <g transform="translate(350, 50)" class="glow">
+      <rect x="0" y="0" width="120" height="60" rx="6" fill="url(#bankGradient)" stroke="#ec4899" stroke-width="1"/>
+      <text x="60" y="25" text-anchor="middle" class="box-title">Bank API</text>
+      <text x="60" y="40" text-anchor="middle" class="box-text">Abstraction</text>
+      <text x="60" y="52" text-anchor="middle" class="box-text">Layer</text>
+    </g>
+    
+    <!-- Offline Queue -->
+    <g transform="translate(500, 50)" class="glow">
+      <rect x="0" y="0" width="120" height="60" rx="6" fill="url(#queueGradient)" stroke="#ec4899" stroke-width="1"/>
+      <text x="60" y="25" text-anchor="middle" class="box-title">Offline Queue</text>
+      <text x="60" y="40" text-anchor="middle" class="box-text">Transaction</text>
+      <text x="60" y="52" text-anchor="middle" class="box-text">Sync</text>
+    </g>
+  </g>
+  
+  <!-- Data Layer -->
+  <g transform="translate(50, 510)">
+    <rect x="0" y="0" width="700" height="70" rx="8" fill="#0ea5e9" fill-opacity="0.1" stroke="#0ea5e9" stroke-width="1"/>
+    <text x="20" y="25" class="label">DATA LAYER</text>
+    
+    <!-- Primary DB -->
+    <g transform="translate(100, 20)" class="glow">
+      <rect x="0" y="0" width="120" height="40" rx="6" fill="url(#dbGradient)" stroke="#0ea5e9" stroke-width="1"/>
+      <text x="60" y="25" text-anchor="middle" class="box-title">PostgreSQL</text>
+    </g>
+    
+    <!-- Cache -->
+    <g transform="translate(250, 20)" class="glow">
+      <rect x="0" y="0" width="120" height="40" rx="6" fill="url(#cacheGradient)" stroke="#0ea5e9" stroke-width="1"/>
+      <text x="60" y="25" text-anchor="middle" class="box-title">Redis Cache</text>
+    </g>
+    
+    <!-- File Storage -->
+    <g transform="translate(400, 20)" class="glow">
+      <rect x="0" y="0" width="120" height="40" rx="6" fill="url(#storageGradient)" stroke="#0ea5e9" stroke-width="1"/>
+      <text x="60" y="25" text-anchor="middle" class="box-title">AWS S3</text>
+    </g>
+    
+    <!-- Analytics -->
+    <g transform="translate(550, 20)" class="glow">
+      <rect x="0" y="0" width="120" height="40" rx="6" fill="url(#analyticsGradient)" stroke="#0ea5e9" stroke-width="1"/>
+      <text x="60" y="25" text-anchor="middle" class="box-title">Analytics Engine</text>
+    </g>
+  </g>
+  
+  <!-- Connections -->
+  <!-- Front End to API -->
+  <path d="M120,180 L120,255 L350,255" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  <path d="M350,180 L350,230" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  <path d="M580,180 L580,255 L420,255" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  
+  <!-- API to Services -->
+  <path d="M350,300 L350,340" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  <path d="M350,340 L110,390" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  <path d="M350,340 L260,390" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  <path d="M350,340 L410,390" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  <path d="M350,340 L560,390" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  
+  <!-- Services to Data -->
+  <path d="M110,450 L110,510" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  <path d="M260,450 L260,510" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  <path d="M410,450 L410,510" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  <path d="M560,450 L560,510" stroke="#ec4899" stroke-width="1.5" stroke-dasharray="5,3" fill="none"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <linearGradient id="mobileGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="webGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="terminalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="apiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6d28d9"/>
+    </linearGradient>
+    <linearGradient id="authGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+    <linearGradient id="paymentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+    <linearGradient id="bankGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+    <linearGradient id="queueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#be185d"/>
+    </linearGradient>
+    <linearGradient id="dbGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="cacheGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="storageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+    <linearGradient id="analyticsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#0369a1"/>
+    </linearGradient>
+  </defs>
+</svg> 
