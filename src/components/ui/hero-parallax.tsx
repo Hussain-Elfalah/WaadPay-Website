@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export interface Product {
   title: string;
@@ -17,6 +18,7 @@ export const HeroParallax = ({
   products: Product[];
   className?: string;
 }) => {
+  const { language } = useLanguage();
   const firstRow = products.slice(0, 5);
   const secondRow = products.slice(5, 10);
   const thirdRow = products.slice(10, 15);
@@ -54,11 +56,14 @@ export const HeroParallax = ({
     springConfig
   );
 
+  // Get direction based on language
+  const isRtl = language === 'ar';
+
   return (
     <div
       ref={ref}
       className={cn(
-        "h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d]",
+        "h-[300vh] py-40 overflow-hidden antialiased relative flex flex-col self-auto [perspective:1000px] [transform-style:preserve-3d] hero-parallax-rtl-fix",
         className
       )}
     >
@@ -70,12 +75,12 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className="flex flex-row-reverse space-x-reverse space-x-20 mb-20"
+        className={`flex ${isRtl ? 'flex-row' : 'flex-row-reverse'} ${isRtl ? 'space-x-20' : 'space-x-reverse space-x-20'} mb-20`}
       >
         {firstRow.map((product) => (
           <ProductCard
             product={product}
-            translate={translateX}
+            translate={isRtl ? translateXReverse : translateX}
             key={product.title}
           />
         ))}
@@ -87,12 +92,12 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className="flex flex-row mb-20 space-x-20"
+        className={`flex ${isRtl ? 'flex-row-reverse' : 'flex-row'} mb-20 ${isRtl ? 'space-x-reverse space-x-20' : 'space-x-20'}`}
       >
         {secondRow.map((product) => (
           <ProductCard
             product={product}
-            translate={translateXReverse}
+            translate={isRtl ? translateX : translateXReverse}
             key={product.title}
           />
         ))}
@@ -104,12 +109,12 @@ export const HeroParallax = ({
           translateY,
           opacity,
         }}
-        className="flex flex-row-reverse space-x-reverse space-x-20"
+        className={`flex ${isRtl ? 'flex-row' : 'flex-row-reverse'} ${isRtl ? 'space-x-20' : 'space-x-reverse space-x-20'}`}
       >
         {thirdRow.map((product) => (
           <ProductCard
             product={product}
-            translate={translateX}
+            translate={isRtl ? translateXReverse : translateX}
             key={product.title}
           />
         ))}
@@ -119,20 +124,22 @@ export const HeroParallax = ({
 };
 
 export const Header = () => {
+  const { t } = useLanguage();
+  
   return (
     <div className="max-w-7xl relative mx-auto py-20 md:py-40 px-4 w-full left-0 top-0">
       <h1 className="text-2xl md:text-7xl font-bold dark:text-white">
-        WaadPay: Libya&apos;s <br /> Trusted Digital Wallet
+        {t('welcomeTitle')} <br />
       </h1>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        Escrow system and multi-bank integration for secure payments across Libya
+        {t('welcomeSubtitle')}
       </p>
       <div className="flex gap-4 mt-8">
         <button className="px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors">
-          Pitch Deck (PDF)
+          {t('pitchDeck')}
         </button>
         <button className="px-6 py-3 border border-black dark:border-white dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-          Contact for Investment
+          {t('contactForInvestment')}
         </button>
       </div>
     </div>
@@ -148,6 +155,8 @@ export const ProductCard = ({
 }) => {
   const ref = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+  const { language } = useLanguage();
+  const isRtl = language === 'ar';
 
   return (
     <motion.div
@@ -170,7 +179,7 @@ export const ProductCard = ({
         />
       </a>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>
-      <h2 className="absolute bottom-4 left-4 opacity-0 group-hover/product:opacity-100 text-white">
+      <h2 className={`absolute bottom-4 ${isRtl ? 'right-4' : 'left-4'} opacity-0 group-hover/product:opacity-100 text-white`}>
         {product.title}
       </h2>
     </motion.div>

@@ -6,8 +6,25 @@ import { Card3D } from "../ui/3d-card";
 import { staticPlaceholder } from "@/lib/utils/placeholders";
 import { HeroParallax } from "../ui/hero-parallax";
 import { demoProducts } from "@/lib/utils/placeholders";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function HeroSection() {
+  const { t, language } = useLanguage();
+  const isRtl = language === 'ar';
+  
+  // Translate demo products titles - normalize keys properly
+  const translatedProducts = demoProducts.map(product => {
+    // Remove spaces and special characters, convert to lowercase
+    const key = product.title.toLowerCase()
+      .replace(/[^\w\s]/gi, '')  // Remove special chars
+      .replace(/\s+/g, '');       // Remove spaces
+    
+    return {
+      ...product,
+      title: t(key) || product.title
+    };
+  });
+
   return (
     <div className="relative overflow-hidden">
       {/* Initial hero part */}
@@ -27,7 +44,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
               >
-                WaadPay: Libya&apos;s Trusted Digital Wallet
+                {t('welcomeTitle')}
               </motion.h1>
               
               <motion.p 
@@ -36,7 +53,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.2 }}
               >
-                Unifying payments across Libya with our secure escrow system and seamless multi-bank integration. The future of financial transactions is here.
+                {t('heroParagraph')}
               </motion.p>
               
               <motion.div 
@@ -49,13 +66,13 @@ export default function HeroSection() {
                   href="#investment" 
                   className="px-8 py-3 bg-black text-white dark:bg-white dark:text-black rounded-full font-medium hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors"
                 >
-                  Pitch Deck (PDF)
+                  {t('pitchDeck')}
                 </a>
                 <a 
                   href="#contact" 
                   className="px-8 py-3 border border-black dark:border-white rounded-full font-medium hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
                 >
-                  Contact for Investment
+                  {t('contactForInvestment')}
                 </a>
               </motion.div>
             </motion.div>
@@ -71,8 +88,8 @@ export default function HeroSection() {
                 className="w-full aspect-[4/3] md:aspect-[16/9]"
               >
                 <div className="text-white text-center p-4">
-                  <h3 className="text-2xl font-bold mb-2">Experience WaadPay</h3>
-                  <p className="opacity-80">Tap to explore our innovative features</p>
+                  <h3 className="text-2xl font-bold mb-2">{t('experienceWaadPay')}</h3>
+                  <p className="opacity-80">{t('tapToExplore')}</p>
                 </div>
               </Card3D>
             </motion.div>
@@ -81,7 +98,7 @@ export default function HeroSection() {
       </section>
       
       {/* Showcase features with parallax */}
-      <HeroParallax products={demoProducts} />
+      <HeroParallax products={translatedProducts} />
     </div>
   );
 } 

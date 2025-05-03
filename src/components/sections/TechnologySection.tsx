@@ -3,8 +3,10 @@
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function TechnologySection() {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -15,12 +17,12 @@ export default function TechnologySection() {
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.8, 1, 0.8]);
 
   const techStack = [
-    { name: "Flutter", logo: "/tech/flutter-svgrepo-com.svg", description: "Cross-platform mobile app development" },
-    { name: "Node.js", logo: "/tech/node-js-svgrepo-com.svg", description: "Backend API and services" },
-    { name: "PostgreSQL", logo: "/tech/postgresql-svgrepo-com.svg", description: "Primary database" },
-    { name: "Redis", logo: "/tech/redis-opened-svgrepo-com.svg", description: "Caching and offline queue" },
-    { name: "AWS", logo: "/tech/aws-svgrepo-com.svg", description: "Cloud infrastructure" },
-    { name: "Firebase", logo: "/tech/Logomark_Full Color.svg", description: "Secure payment integration" },
+    { name: "Flutter", logo: "/tech/flutter-svgrepo-com.svg", description: t('flutterDesc') },
+    { name: "Node.js", logo: "/tech/node-js-svgrepo-com.svg", description: t('nodeDesc') },
+    { name: "PostgreSQL", logo: "/tech/postgresql-svgrepo-com.svg", description: t('postgresDesc') },
+    { name: "Redis", logo: "/tech/redis-opened-svgrepo-com.svg", description: t('redisDesc') },
+    { name: "AWS", logo: "/tech/aws-svgrepo-com.svg", description: t('awsDesc') },
+    { name: "Firebase", logo: "/tech/Logomark_Full Color.svg", description: t('firebaseDesc') },
   ];
 
   return (
@@ -34,10 +36,10 @@ export default function TechnologySection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Technology Built for Libya
+            {t('technologyTitle')}
           </h2>
           <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-3xl mx-auto">
-            Our platform is designed specifically to overcome Libya&apos;s unique technical challenges
+            {t('technologySubtitle')}
           </p>
         </motion.div>
 
@@ -116,15 +118,15 @@ export default function TechnologySection() {
             transition={{ duration: 0.5 }}
             className="bg-neutral-50 dark:bg-neutral-900 p-8 rounded-xl shadow-lg"
           >
-            <h3 className="text-2xl font-bold mb-4">Key Technical Differentiators</h3>
+            <h3 className="text-2xl font-bold mb-4">{t('secureArchitecture')}</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <span className="inline-flex items-center justify-center p-1 bg-blue-100 dark:bg-blue-900 rounded-full mr-3 mt-1">
                   <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                 </span>
                 <div>
-                  <p className="font-semibold">SIM-Binding Authentication</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Multi-factor authentication tied to user SIM cards for enhanced security</p>
+                  <p className="font-semibold">{t('simBinding')}</p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">{t('simBindingDesc')}</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -132,8 +134,8 @@ export default function TechnologySection() {
                   <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                 </span>
                 <div>
-                  <p className="font-semibold">Offline-First Architecture</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Queue transactions locally during connectivity issues, sync when back online</p>
+                  <p className="font-semibold">{t('offlineArchitecture')}</p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">{t('offlineArchitectureDesc')}</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -141,8 +143,8 @@ export default function TechnologySection() {
                   <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
                 </span>
                 <div>
-                  <p className="font-semibold">Bank API Abstraction Layer</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Unified interface to connect with all Libyan banks despite different systems</p>
+                  <p className="font-semibold">{t('apiIntegration')}</p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">{t('apiIntegrationDesc')}</p>
                 </div>
               </li>
             </ul>
@@ -155,15 +157,15 @@ export default function TechnologySection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="bg-neutral-50 dark:bg-neutral-900 p-8 rounded-xl shadow-lg"
           >
-            <h3 className="text-2xl font-bold mb-4">Built for Libyan Conditions</h3>
+            <h3 className="text-2xl font-bold mb-4">{t('builtForLibya')}</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <span className="inline-flex items-center justify-center p-1 bg-green-100 dark:bg-green-900 rounded-full mr-3 mt-1">
                   <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                 </span>
                 <div>
-                  <p className="font-semibold">Low Bandwidth Optimization</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">App designed to work efficiently on 2G/3G networks common in rural Libya</p>
+                  <p className="font-semibold">{t('lowBandwidth')}</p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">{t('lowBandwidthDesc')}</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -171,8 +173,8 @@ export default function TechnologySection() {
                   <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                 </span>
                 <div>
-                  <p className="font-semibold">Distributed Infrastructure</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Regional servers in Tripoli and Benghazi to ensure resilience during outages</p>
+                  <p className="font-semibold">{t('distributedInfrastructure')}</p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">{t('distributedInfrastructureDesc')}</p>
                 </div>
               </li>
               <li className="flex items-start">
@@ -180,8 +182,8 @@ export default function TechnologySection() {
                   <span className="w-2 h-2 bg-green-500 rounded-full"></span>
                 </span>
                 <div>
-                  <p className="font-semibold">Bilingual Support</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Full Arabic and English language support throughout the application</p>
+                  <p className="font-semibold">{t('bilingualSupport')}</p>
+                  <p className="text-sm text-neutral-600 dark:text-neutral-400">{t('bilingualSupportDesc')}</p>
                 </div>
               </li>
             </ul>
@@ -195,7 +197,7 @@ export default function TechnologySection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <h3 className="text-2xl font-bold mb-8">Our Technology Stack</h3>
+          <h3 className="text-2xl font-bold mb-8">{t('blockchainTechnology')}</h3>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {techStack.map((tech, i) => (

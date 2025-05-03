@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        arabic: ['var(--font-ibm-plex-arabic)'],
+      },
       colors: {
         primary: {
           50: '#eef2ff',

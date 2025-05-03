@@ -6,13 +6,14 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Moon, Sun, Menu, X, Globe } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [language, setLanguage] = useState("en");
+  const { language, setLanguage, t } = useLanguage();
 
   // Theme toggle effect
   useEffect(() => {
@@ -49,13 +50,16 @@ export default function Navbar() {
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <Image
-              src={theme === "dark" ? "/logo-white.svg" : "/logo.svg"}
-              alt="WaadPay Logo"
-              width={130}
-              height={40}
-              className="h-8 w-auto"
-            />
+            {mounted && (
+              <Image
+                src={theme === "dark" ? "/partners/placeholder-svgrepo-com.svg" : "/partners/placeholder-svgrepo-com.svg"}
+                alt="WaadPay Logo"
+                width={130}
+                height={40}
+                className="h-8 w-auto"
+                priority
+              />
+            )}
           </Link>
 
           {/* Desktop Navigation */}
@@ -64,31 +68,31 @@ export default function Navbar() {
               href="#about" 
               className="text-neutral-700 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              About
+              {t('about')}
             </Link>
             <Link 
               href="#features" 
               className="text-neutral-700 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              Features
+              {t('features')}
             </Link>
             <Link 
               href="#technology" 
               className="text-neutral-700 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              Technology
+              {t('technology')}
             </Link>
             <Link 
               href="#team" 
               className="text-neutral-700 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              Team
+              {t('team')}
             </Link>
             <Link 
               href="#investment" 
               className="text-neutral-700 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
             >
-              Investment
+              {t('investment')}
             </Link>
           </nav>
           
@@ -124,7 +128,7 @@ export default function Navbar() {
               href="#contact" 
               className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
             >
-              Contact Us
+              {t('contactUs')}
             </Link>
           </div>
           
@@ -175,35 +179,35 @@ export default function Navbar() {
                 className="block py-2 text-neutral-700 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                About
+                {t('about')}
               </Link>
               <Link 
                 href="#features" 
                 className="block py-2 text-neutral-700 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Features
+                {t('features')}
               </Link>
               <Link 
                 href="#technology" 
                 className="block py-2 text-neutral-700 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Technology
+                {t('technology')}
               </Link>
               <Link 
                 href="#team" 
                 className="block py-2 text-neutral-700 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Team
+                {t('team')}
               </Link>
               <Link 
                 href="#investment" 
                 className="block py-2 text-neutral-700 dark:text-neutral-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Investment
+                {t('investment')}
               </Link>
               
               <div className="pt-2 flex justify-between items-center">
@@ -221,7 +225,7 @@ export default function Navbar() {
                   className="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Contact Us
+                  {t('contactUs')}
                 </Link>
               </div>
             </div>

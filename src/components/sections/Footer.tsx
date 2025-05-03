@@ -4,10 +4,16 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function Footer() {
   // Store the current year in a variable
   const currentYear = new Date().getFullYear();
+  const { language, setLanguage, t } = useLanguage();
+  
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setLanguage(e.target.value);
+  };
   
   return (
     <footer className="bg-neutral-900 text-white pt-16 pb-8">
@@ -16,7 +22,7 @@ export default function Footer() {
           <div>
             <div className="mb-6">
               <Image 
-                src="/logo-white.svg" 
+                src="/partners/placeholder-svgrepo-com.svg" 
                 alt="WaadPay Logo" 
                 width={150} 
                 height={50}
@@ -24,7 +30,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-neutral-400 mb-6">
-              Libya&apos;s trusted digital wallet with secure escrow payments and multi-bank integration
+              {t('welcomeSubtitle')}
             </p>
             <div className="flex space-x-4">
               <a href="#" className="h-10 w-10 rounded-full bg-neutral-800 flex items-center justify-center hover:bg-blue-600 transition-colors">
@@ -51,50 +57,50 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('about')}</h3>
             <ul className="space-y-2">
-              <li><a href="#about" className="text-neutral-400 hover:text-white transition-colors">About Us</a></li>
-              <li><a href="#features" className="text-neutral-400 hover:text-white transition-colors">Features</a></li>
-              <li><a href="#technology" className="text-neutral-400 hover:text-white transition-colors">Technology</a></li>
-              <li><a href="#team" className="text-neutral-400 hover:text-white transition-colors">Our Team</a></li>
-              <li><a href="#investment" className="text-neutral-400 hover:text-white transition-colors">Investment</a></li>
-              <li><a href="#contact" className="text-neutral-400 hover:text-white transition-colors">Contact</a></li>
+              <li><a href="#about" className="text-neutral-400 hover:text-white transition-colors">{t('about')}</a></li>
+              <li><a href="#features" className="text-neutral-400 hover:text-white transition-colors">{t('features')}</a></li>
+              <li><a href="#technology" className="text-neutral-400 hover:text-white transition-colors">{t('technology')}</a></li>
+              <li><a href="#team" className="text-neutral-400 hover:text-white transition-colors">{t('team')}</a></li>
+              <li><a href="#investment" className="text-neutral-400 hover:text-white transition-colors">{t('investment')}</a></li>
+              <li><a href="#contact" className="text-neutral-400 hover:text-white transition-colors">{t('contactUs')}</a></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Resources</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('resources')}</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Pitch Deck</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Technical Whitepaper</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">API Documentation</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Press Kit</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Financial Projections</a></li>
-              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">{t('pitchDeck')}</a></li>
+              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">{t('technicalWhitepaper')}</a></li>
+              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">{t('apiDocumentation')}</a></li>
+              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">{t('pressKit')}</a></li>
+              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">{t('financialProjections')}</a></li>
+              <li><a href="#" className="text-neutral-400 hover:text-white transition-colors">{t('privacyPolicy')}</a></li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('newsletter')}</h3>
             <p className="text-neutral-400 mb-4">
-              Stay updated with our progress and investment opportunities
+              {t('newsletterDesc')}
             </p>
             <form className="flex mb-4">
               <input 
                 type="email" 
-                placeholder="Enter your email" 
+                placeholder={t('emailPlaceholder')} 
                 className="flex-grow bg-neutral-800 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
               <button 
                 type="submit" 
                 className="bg-blue-600 hover:bg-blue-700 rounded-r-lg px-4 transition-colors"
               >
-                Subscribe
+                {t('subscribe')}
               </button>
             </form>
             <div className="flex items-center">
               <div className="mr-2 text-sm bg-green-500/20 text-green-500 py-1 px-2 rounded">
-                Available for:
+                {t('availableFor')}
               </div>
               <div className="flex space-x-2">
                 <svg viewBox="0 0 384 512" className="h-5 w-5 text-neutral-400" fill="currentColor">
@@ -110,19 +116,23 @@ export default function Footer() {
         
         <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-neutral-500 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} WaadPay. All rights reserved.
+            &copy; {currentYear} WaadPay. {t('copyright')}
           </p>
           
           <div className="flex space-x-4 md:space-x-8">
-            <a href="#" className="text-neutral-500 hover:text-white text-sm">Terms of Service</a>
-            <a href="#" className="text-neutral-500 hover:text-white text-sm">Privacy Policy</a>
-            <a href="#" className="text-neutral-500 hover:text-white text-sm">Cookies</a>
-            <a href="#" className="text-neutral-500 hover:text-white text-sm">Sitemap</a>
+            <a href="#" className="text-neutral-500 hover:text-white text-sm">{t('termsOfService')}</a>
+            <a href="#" className="text-neutral-500 hover:text-white text-sm">{t('privacyPolicy')}</a>
+            <a href="#" className="text-neutral-500 hover:text-white text-sm">{t('cookies')}</a>
+            <a href="#" className="text-neutral-500 hover:text-white text-sm">{t('sitemap')}</a>
           </div>
           
           <div className="mt-4 md:mt-0 flex items-center">
-            <span className="text-neutral-500 text-sm mr-2">Language:</span>
-            <select className="bg-neutral-800 text-white text-sm rounded-md px-2 py-1 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <span className="text-neutral-500 text-sm mr-2">{t('language')}:</span>
+            <select 
+              className="bg-neutral-800 text-white text-sm rounded-md px-2 py-1 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={language}
+              onChange={handleLanguageChange}
+            >
               <option value="en">English</option>
               <option value="ar">العربية</option>
             </select>

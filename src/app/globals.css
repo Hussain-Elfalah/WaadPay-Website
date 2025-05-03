@@ -22,6 +22,17 @@ html {
 
 body {
   overflow-x: hidden;
+  font-family: var(--font-inter);
+}
+
+/* Default font for English */
+html[lang="en"] body {
+  font-family: var(--font-inter);
+}
+
+/* IBM Plex Arabic font for Arabic */
+html[lang="ar"] body {
+  font-family: var(--font-ibm-plex-arabic);
 }
 
 /* Custom scrollbar */
@@ -80,4 +91,96 @@ body {
 
 .animate-ping {
   animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Add RTL support for Arabic language */
+html[dir="rtl"] {
+  text-align: right;
+  font-family: var(--font-ibm-plex-arabic);
+}
+
+/* Don't reverse flex direction globally as it breaks specific components */
+html[dir="rtl"] .text-direction-aware {
+  flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .space-x-8 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+html[dir="rtl"] .space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+html[dir="rtl"] .space-x-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+html[dir="rtl"] .space-x-20 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 1;
+}
+
+html[dir="rtl"] .mr-1, 
+html[dir="rtl"] .mr-3, 
+html[dir="rtl"] .mr-4 {
+  margin-right: 0;
+  margin-left: 0.25rem;
+}
+
+html[dir="rtl"] .mr-3 {
+  margin-left: 0.75rem;
+}
+
+html[dir="rtl"] .mr-4 {
+  margin-left: 1rem;
+}
+
+html[dir="rtl"] .ml-1,
+html[dir="rtl"] .ml-3,
+html[dir="rtl"] .ml-4 {
+  margin-left: 0;
+  margin-right: 0.25rem;
+}
+
+html[dir="rtl"] .ml-3 {
+  margin-right: 0.75rem;
+}
+
+html[dir="rtl"] .ml-4 {
+  margin-right: 1rem;
+}
+
+/* Additional RTL support for HeroParallax */
+html[dir="rtl"] .hero-parallax-rtl-fix {
+  direction: ltr;
+}
+
+/* Fix text alignment inside hero parallax for RTL mode */
+html[dir="rtl"] .hero-parallax-rtl-fix h1,
+html[dir="rtl"] .hero-parallax-rtl-fix p,
+html[dir="rtl"] .hero-parallax-rtl-fix button {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Ensure text alignment for product cards in RTL */
+html[dir="rtl"] .group\/product h2 {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Fix ContactSection alignment for RTL */
+html[dir="rtl"] input, 
+html[dir="rtl"] textarea, 
+html[dir="rtl"] select {
+  text-align: right;
+}
+
+html[dir="rtl"] label {
+  text-align: right;
+}
+
+/* RTL adjustments for flex items with icons */
+html[dir="rtl"] .flex.items-start {
+  text-align: right;
 }
