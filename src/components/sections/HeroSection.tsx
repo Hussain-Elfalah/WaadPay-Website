@@ -10,7 +10,6 @@ import { useLanguage } from "@/lib/LanguageContext";
 
 export default function HeroSection() {
   const { t, language } = useLanguage();
-  const isRtl = language === 'ar';
   
   // Translate demo products titles - normalize keys properly
   const translatedProducts = demoProducts.map(product => {
@@ -26,7 +25,7 @@ export default function HeroSection() {
   });
 
   return (
-    <div className="relative overflow-hidden">
+    <div className={`relative overflow-hidden ${language === 'ar' ? 'rtl' : 'ltr'}`}>
       {/* Initial hero part */}
       <section className="relative min-h-screen w-full bg-gradient-to-b from-white to-neutral-100 dark:from-black dark:to-neutral-900 overflow-hidden pt-20">
         <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.03] bg-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>

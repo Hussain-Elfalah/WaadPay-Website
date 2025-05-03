@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/lib/LanguageContext";
+import Image from "next/image";
 
 export interface Product {
   title: string;
@@ -151,10 +152,9 @@ export const ProductCard = ({
   translate,
 }: {
   product: Product;
-  translate: any;
+  translate: ReturnType<typeof useSpring>;
 }) => {
   const ref = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
   const { language } = useLanguage();
   const isRtl = language === 'ar';
 
@@ -165,17 +165,15 @@ export const ProductCard = ({
       whileHover={{
         y: -20,
       }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
       className="group/product h-96 w-[30rem] relative flex-shrink-0"
     >
       <a href={product.link} className="block group-hover/product:shadow-2xl">
-        <img
+        <Image
           src={product.thumbnail}
-          height="600"
-          width="600"
-          className="object-cover object-left-top absolute h-full w-full inset-0"
           alt={product.title}
+          width={600}
+          height={600}
+          className="object-cover object-left-top absolute h-full w-full inset-0"
         />
       </a>
       <div className="absolute inset-0 h-full w-full opacity-0 group-hover/product:opacity-80 bg-black pointer-events-none"></div>

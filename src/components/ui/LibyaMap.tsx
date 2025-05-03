@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import Image from "next/image";
 
 // Region data for Libya
 const regionData = {
@@ -470,7 +469,7 @@ export default function LibyaMap() {
               timelineText.setAttribute('fill-opacity', '0.8');
               
               // Set timeline based on phase
-              let timeline = '';
+              const timeline = '';
               // if (phase === 1) timeline = 'Q4 2024';
               // if (phase === 2) timeline = 'Q2 2025';
               // if (phase === 3) timeline = 'Q4 2025';
